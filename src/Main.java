@@ -7,10 +7,10 @@ public class Main {
         int[] prices = {30, 15, 65};
         Basket basket = null;
         Scanner s = new Scanner(System.in);
-        File basketFile = new File("basket.txt");
+        File basketFile = new File("basket.bin");
 
         if (basketFile.exists()) {
-            basket = Basket.loadFromTxtFile(basketFile);
+            basket = Basket.loadFromBinFile(basketFile);
         } else basket = new Basket(prices,products);
 
         for (int i = 0; i < products.length; i++) {
@@ -25,7 +25,7 @@ public class Main {
             int productNum = Integer.parseInt(parts[0]) - 1;
             int amount = Integer.parseInt(parts[1]);
             basket.addToCart(productNum,amount);
-            basket.saveTxt(basketFile);
+            basket.saveBin(basketFile);
         }
         basket.printCart();
     }
